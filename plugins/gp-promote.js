@@ -1,4 +1,7 @@
 let handler = async (m, { conn,usedPrefix, command, text}) => {
+  let now = new Date();
+  let date = now.toDateString(); // Convert date to a string
+  let time = now.toLocaleTimeString(); // Get time in local format
 if(isNaN(text) && !text.match(/@/g)){
 	
 }else if(isNaN(text)) {
@@ -19,11 +22,15 @@ var user = number + '@s.whatsapp.net'
 } catch (e) {
 } finally {
 conn.groupParticipantsUpdate(m.chat, [user], 'promote')
-m.reply(`✅ 𝐔𝐬𝐞𝐫 𝐡𝐚𝐬 𝐛𝐞𝐞𝐧 𝐏𝐫𝐨𝐦𝐨𝐭𝐞𝐝`)
+m.reply(`
+┏━━ *✅ User promoted* ━┓
+┃ 📆  *Date:* ${date} 
+┃ ⏲️  *Time:* ${time} 
+┗━━━━━━━━━━━━━━━━┛`)
 }}
 handler.help = ['promote']
 handler.tags = ['group']
-handler.command = ['promote', 'promover', 'p'] 
+handler.command = ['promote', 'admin'] 
 handler.group = true
 handler.admin = true
 handler.botAdmin = true
